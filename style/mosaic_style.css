@@ -1,0 +1,93 @@
+﻿#id1,#id2 {
+    position: absolute;
+    height: 50px;
+    width: 60px;
+    background-color: blue;
+}
+.field_small {
+    position: absolute;
+    height: 280px;
+    width: 280px;
+}
+.new_field {
+    position: absolute;
+
+}
+.rainbow {
+    position: absolute;
+    left: 400px;
+    top: 20px;
+    height: 400px;
+    width: 60px;
+}
+.map{
+    position: absolute;
+    left: 800px;
+    top: 20px;
+    height: 120px;
+    width: 120px;
+}
+.wr {
+    position: absolute;
+    background: rgba(98,135,167, .5);
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    display: none;
+    z-index: 1;
+
+}
+.mess{
+    position: absolute;
+    background: #8fbc8f;
+    color: #00008b;
+    height: 350px;
+    width: 400px;
+    top: 150px;
+    left: 450px;
+    opacity: 1;
+    text-align: center;
+    font-size: 24px;
+    display: none;
+    z-index: 2;
+}
+.result{
+    height: 350px;
+    width: 400px;
+}
+#timer{
+    position: absolute;
+    left: 800px;
+    top: 180px;
+}
+
+#res2{
+    background: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+
+}
+#res3, #res4, #res5{
+    background: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 90px 90px;
+
+}
+#p3{
+    border-style: outset;
+
+    color: #00008b;
+    background: #ffe4c4;
+    z-index: 3;
+    height: 50px;
+    width: 150px;
+    position: absolute;
+    left: 125px;
+    top: 250px;
+    display: none;
+    opacity: 1;
+    text-align: center;
+    font-size: 18px;
+}

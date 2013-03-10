@@ -1,0 +1,21 @@
+﻿.menu {
+    position: absolute;
+    left: 500px;
+    top: 50px;
+    width: 250px;
+    height: 180px;
+    background-color: #8fbc8f;
+    border: 2px inset black;
+    color: #00008b;
+
+}
+td,tr {
+    valign:middle;
+    border: 2px inset black;
+
+}
+.body_menu tr:hover {
+    background: green;
+    color: white;
+
+}
