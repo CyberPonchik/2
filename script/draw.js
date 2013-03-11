@@ -372,3 +372,43 @@ function PauseOff (){
     document.getElementById("p3").style.display="none";
 
 }
+
+
+/* этот код помечает картинки, для удобства разработки */
+var lis = document.getElementsByTagName('li');
+for(var i=0; i<lis.length; i++) {
+    lis[i].style.position='relative';
+    var span = document.createElement('span');
+    // обычно лучше использовать CSS-классы,
+    // но этот код - для удобства разработки, так что не будем трогать стили
+    span.style.cssText='position:absolute;left:0;top:0';
+    span.innerHTML = i+1;
+    lis[i].appendChild(span);
+}
+
+/* конфигурация */
+var width = 130; // ширина изображения
+var count = 3; // количество изображений
+
+var ul = document.getElementById('images');
+var imgs = ul.getElementsByTagName('li');
+
+var position = 0; // текущий сдвиг влево
+
+document.getElementById('prev').onclick = function() {
+    if (position >= 0) return false; // уже до упора
+
+    // последнее передвижение влево может быть не на 3, а на 2 или 1 элемент
+    position = Math.min(position + width*count, 0)
+    ul.style.marginLeft = position + 'px';
+    return false;
+}
+
+document.getElementById('next').onclick = function() {
+    if (position <= -width*(imgs.length-count)) return false; // уже до упора
+
+    // последнее передвижение вправо может быть не на 3, а на 2 или 1 элемент
+    position = Math.max(position-width*count, -width*(imgs.length-count));
+    ul.style.marginLeft = position + 'px';
+    return false;
+};
