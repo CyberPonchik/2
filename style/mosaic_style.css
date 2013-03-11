@@ -4,11 +4,6 @@
     width: 60px;
     background-color: blue;
 }
-.field_small {
-    position: absolute;
-    height: 280px;
-    width: 280px;
-}
 .new_field {
     position: absolute;
 
@@ -20,6 +15,14 @@
     height: 400px;
     width: 60px;
 }
+.new_rainbow {
+    position: absolute;
+    left: 500px;
+    top: 20px;
+    height: 600px;
+    width: 120px;
+}
+
 .map{
     position: absolute;
     left: 800px;

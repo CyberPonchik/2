@@ -18,12 +18,13 @@ function OnStart(){
     sec = 0;
     min = 0;
     GetTask();
-    Draw();
+    //Draw();
     Timer();
     Paint();
     ClearTable('new_field');
     GetLengthField();
     CreateTable(field_length);
+    CreateRainbow();
 }
 
 function ClearTable(id){
@@ -43,14 +44,14 @@ function CreateTable(field_length){
     field.style.position = 'absolute';
     field.style.width = '400px';
     field.style.height = '400px';
-    field.id = "new_field";
+    //field.id = "new_field";
 
 
-    for (i=0; i<=field_length-1; i++){
+    for (var i=0; i<=field_length-1; i++){
         row=field.insertRow(-1);
-        for (j=0;j<=field_length-1; j++){
+        for (var j=0;j<=field_length-1; j++){
             cell=row.insertCell(-1);
-            num=i*field_length+(j+1);
+            var num=i*field_length+(j+1);
             cell.id="tc"+num;
             cell.innerHTML=cell.id;
 
@@ -66,11 +67,29 @@ function CreateTable(field_length){
     document.body.appendChild(field);
 }
 
+function CreateRainbow(){
+    var rainbow;
+    var row;
+    var cell;
+
+    rainbow=document.getElementById('new_rainbow');
+    for (var i=0; i<=11; i++){
+        row=rainbow.insertRow(-1);
+        for (var j=0; j<=1; j++){
+            cell=row.insertCell(-1);
+            var num=i*2+(j+1);
+            cell.id="c"+num;
+            cell.innerHTML=cell.id;
+            cell.style.backgroundColor = arrColors[num];
+        }
+    }
+    SaveColor();
+}
 
 function GetLengthField(){
-    if (num_lev===1){field_length=4; }
-    else {if (num_lev===2){field_length=8;}
-        else {if(num_lev===3){field_length=16;}
+    if (num_lev===1 || num_lev===2 || num_lev===3){field_length=4; }
+    else {if (num_lev===4 || num_lev===5 || num_lev===6){field_length=8;}
+        else {if(num_lev===7 || num_lev===8 || num_lev===9){field_length=16;}
         }
     }
 }
@@ -85,14 +104,14 @@ function Paint(){
 }
 
 //Рисуем палитру цветов
-function Draw(){
+/*function Draw(){
     for(var i=0; i<arrColors.length; i++) {
         rain_id="col"+parseInt(i+1);
         rain_new = document.getElementById(rain_id);
         rain_new.style.backgroundColor = arrColors[i];
 
     }
-}
+}*/
 //Поучаем треки звуков
 s_aud="audio_colors";
 sound=document.getElementById(s_aud);
@@ -100,11 +119,18 @@ awards=document.getElementById("audio_awards");
 sound_fon=document.getElementById("audio_fon");
 
 //Сохраняем выбранный из палитры цвет для последующей закраски им
-function SaveColor (elem_rain,mus) {
+function SaveColor () {
+    var rainbow=document.getElementById('new_rainbow');
+    rainbow.addEventListener("click",function(e){
+        var elem = null;
+        if (e) {elem = e.target}
+        var id = elem.id;
+        var cur_color=parseInt(id.replace(/\D+/g,""));
+        AudioPlay(arrColors_name[cur_color-1]);
+        //UseColor(id);
 
-    cur_color=elem_rain;
-    AudioPlay(mus);
-    return cur_color;
+    },false);
+     return cur_color;
 }
 
 
@@ -330,7 +356,7 @@ function LoadMenu(){
 function ClearField(){
 
     for (var i=0; i<arrCells.length; i++) {
-        str = "td"+parseInt(i+1);
+        str = "tc"+parseInt(i+1);
         id_arr = document.getElementById(str);
         id_arr.style.backgroundColor = "";
     }
@@ -374,41 +400,3 @@ function PauseOff (){
 }
 
 
-/* этот код помечает картинки, для удобства разработки */
-var lis = document.getElementsByTagName('li');
-for(var i=0; i<lis.length; i++) {
-    lis[i].style.position='relative';
-    var span = document.createElement('span');
-    // обычно лучше использовать CSS-классы,
-    // но этот код - для удобства разработки, так что не будем трогать стили
-    span.style.cssText='position:absolute;left:0;top:0';
-    span.innerHTML = i+1;
-    lis[i].appendChild(span);
-}
-
-/* конфигурация */
-var width = 130; // ширина изображения
-var count = 3; // количество изображений
-
-var ul = document.getElementById('images');
-var imgs = ul.getElementsByTagName('li');
-
-var position = 0; // текущий сдвиг влево
-
-document.getElementById('prev').onclick = function() {
-    if (position >= 0) return false; // уже до упора
-
-    // последнее передвижение влево может быть не на 3, а на 2 или 1 элемент
-    position = Math.min(position + width*count, 0)
-    ul.style.marginLeft = position + 'px';
-    return false;
-}
-
-document.getElementById('next').onclick = function() {
-    if (position <= -width*(imgs.length-count)) return false; // уже до упора
-
-    // последнее передвижение вправо может быть не на 3, а на 2 или 1 элемент
-    position = Math.max(position-width*count, -width*(imgs.length-count));
-    ul.style.marginLeft = position + 'px';
-    return false;
-};
