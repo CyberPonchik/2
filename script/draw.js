@@ -126,8 +126,9 @@ function SaveColor () {
         var elem = null;
         if (e) {elem = e.target}
         var id = elem.id;
-        var cur_color=parseInt(id.replace(/\D+/g,""));
-        AudioPlay(arrColors_name[cur_color-1]);
+        cur_color=parseInt(id.replace(/\D+/g,""));
+        --cur_color;
+        AudioPlay(arrColors_name[cur_color]);
         //UseColor(id);
 
     },false);
