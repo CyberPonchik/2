@@ -10,6 +10,8 @@
 var lis = document.getElementsByTagName('li');
 
 for(var i=0; i<lis.length; i++) {
+    var li = lis[i];
+    li.id = "li"+i;
     lis[i].style.position='relative';
     var span = document.createElement('span');
     // обычно лучше использовать CSS-классы,
@@ -25,6 +27,13 @@ var count = 3; // количество изображений
 
 var ul = document.getElementById('images');
 var imgs = ul.getElementsByTagName('li');
+
+ul.addEventListener('click', function(event){
+    var elem = null;
+    if (event) {elem = event.target}
+    var id= elem.parentNode.id;
+    alert(id);
+}, false);
 
 var position = 0; // текущий сдвиг влево
 
@@ -45,4 +54,6 @@ document.getElementById('next').addEventListener('click', function(event){
     ul.style.marginLeft = position + 'px';
     return false;
 },false);
+
+
 

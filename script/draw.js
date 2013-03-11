@@ -22,6 +22,7 @@ function OnStart(){
     Timer();
     Paint();
     ClearTable('new_field');
+    ClearTable('new_rainbow')
     GetLengthField();
     CreateTable(field_length);
     CreateRainbow();
@@ -80,7 +81,7 @@ function CreateRainbow(){
             var num=i*2+(j+1);
             cell.id="c"+num;
             cell.innerHTML=cell.id;
-            cell.style.backgroundColor = arrColors[num];
+            cell.style.backgroundColor = arrColors[num-1];
         }
     }
     SaveColor();
