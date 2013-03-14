@@ -5,7 +5,7 @@
  * Time: 14:40
  * To change this template use File | Settings | File Templates.
  */
-
+num_lev=parseInt(localStorage.num_lev);
 //По номеру уровня получаем массив с заданием для этого уровня
 function GetTask(){
     var str_task;
@@ -377,7 +377,8 @@ function Repeat(){
 //Изменяет номер уровня и загружает его
 function NewLevel(){
 
-    num_lev = num_lev + 1;
+    var new_lev = parseInt(localStorage.num_level) + 1;
+    localStorage.num_lev = new_lev;
     document.getElementById("wr").style.display="none";
     document.getElementById("mess").style.display="none";
     ClearField();

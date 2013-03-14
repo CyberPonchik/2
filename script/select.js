@@ -32,7 +32,12 @@ ul.addEventListener('click', function(event){
     var elem = null;
     if (event) {elem = event.target}
     var id= elem.parentNode.id;
-    alert(id);
+    window.num_lev = parseInt(id.replace(/\D+/g,""))+1;
+    localStorage.num_lev=window.num_lev;
+    //console.log(num_lev);
+    window.location.href = "index.html";
+
+    //alert(id);
 }, false);
 
 var position = 0; // текущий сдвиг влево

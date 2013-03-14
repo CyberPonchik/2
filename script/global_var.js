@@ -26,7 +26,7 @@ var end=0;
 var end_aw=0;
 var med;
 var s_aud;
-var num_lev = 1;
+var num_lev;
 var audiosprite = {
     'attention':[0,2],
     'bejevii':[2,4],

@@ -8,9 +8,9 @@
 
 var arr_map=Array();
 function OpenLevel(lev){
-   num_lev = lev;
-   MainDB();
-   arr_map=ReadMap(1);
+   //num_lev = lev;
+   //MainDB();
+   //arr_map=ReadMap(1);
    window.location.href = "index.html";
 }
 function OpenResults(){

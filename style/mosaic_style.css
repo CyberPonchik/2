@@ -8,13 +8,6 @@
     position: absolute;
 
 }
-.rainbow {
-    position: absolute;
-    left: 400px;
-    top: 20px;
-    height: 400px;
-    width: 60px;
-}
 .new_rainbow {
     position: absolute;
     left: 500px;
@@ -80,7 +73,6 @@
 }
 #p3{
     border-style: outset;
-
     color: #00008b;
     background: #ffe4c4;
     z-index: 3;
