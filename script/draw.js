@@ -5,7 +5,7 @@
  * Time: 14:40
  * To change this template use File | Settings | File Templates.
  */
-num_lev=parseInt(localStorage.num_lev);
+//num_lev=parseInt(localStorage.num_lev);
 //По номеру уровня получаем массив с заданием для этого уровня
 function GetTask(){
     var str_task;
@@ -15,17 +15,29 @@ return arrCells;}
 var field;
 //Вызывается при загрузке страницы
 function OnStart(){
+
+    localStorage.num_lev=1;
+    ClearTable('new_rainbow');
+    CreateRainbow();
+    onRestart();
+
+    //Draw();
+
+}
+
+function onRestart(){
+    num_lev=parseInt(localStorage.num_lev);
+    GetTask();
     sec = 0;
     min = 0;
-    GetTask();
-    //Draw();
     Timer();
     Paint();
     ClearTable('new_field');
-    ClearTable('new_rainbow')
+
     GetLengthField();
     CreateTable(field_length);
-    CreateRainbow();
+
+
 }
 
 function ClearTable(id){
@@ -61,8 +73,12 @@ function CreateTable(field_length){
     field.addEventListener("click",function(e){
         var elem = null;
         if (e) {elem = e.target}
-        var id = elem.id;
-        UseColor(id);
+
+        if (elem.tagName!='TABLE'){
+            var id = elem.id;
+            UseColor(id);
+        }
+
 
     },false);
     document.body.appendChild(field);
@@ -371,18 +387,18 @@ function Repeat(){
     document.getElementById("wr").style.display="none";
     document.getElementById("mess").style.display="none";
     ClearField();
-    OnStart();
+    onRestart();
 }
 
 //Изменяет номер уровня и загружает его
 function NewLevel(){
 
-    var new_lev = parseInt(localStorage.num_level) + 1;
+    var new_lev = parseInt(localStorage.num_lev) + 1;
     localStorage.num_lev = new_lev;
     document.getElementById("wr").style.display="none";
     document.getElementById("mess").style.display="none";
     ClearField();
-    OnStart();
+    onRestart();
 }
 
 function PauseOn (){
