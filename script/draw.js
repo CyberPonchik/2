@@ -16,6 +16,9 @@ var field;
 //Вызывается при загрузке страницы
 function OnStart(){
 
+    for (var i=1; i<=field_length; i++){
+        arr_Flags[i]=0;
+    }
     localStorage.num_lev=1;
     ClearTable('new_rainbow');
     CreateRainbow();
@@ -30,13 +33,11 @@ function onRestart(){
     GetTask();
     sec = 0;
     min = 0;
+
     Timer();
     Paint();
     ClearTable('new_field');
-
-    GetLengthField();
     CreateTable(field_length);
-
 
 }
 
@@ -52,13 +53,11 @@ function CreateTable(field_length){
 
     //field=document.createElement('table');
     field=document.getElementById('new_field');
-   // field.style.border = '2';
-    //field.style.borderColor='black';
+   /* field.style.border = '2';
+    field.style.borderColor='black';
     field.style.position = 'absolute';
     field.style.width = '400px';
-    field.style.height = '400px';
-    //field.id = "new_field";
-
+    field.style.height = '400px';*/
 
     for (var i=0; i<=field_length-1; i++){
         row=field.insertRow(-1);
@@ -67,6 +66,7 @@ function CreateTable(field_length){
             var num=i*field_length+(j+1);
             cell.id="tc"+num;
             cell.innerHTML=cell.id;
+            cell.style.backgroundColor="";
 
         }
     }
@@ -103,19 +103,26 @@ function CreateRainbow(){
     SaveColor();
 }
 
-function GetLengthField(){
+/*function GetLengthField(){
     if (num_lev===1 || num_lev===2 || num_lev===3){field_length=4; }
     else {if (num_lev===4 || num_lev===5 || num_lev===6){field_length=8;}
         else {if(num_lev===7 || num_lev===8 || num_lev===9){field_length=16;}
         }
     }
-}
+}*/
 //Закрашиваем подсказку для раскраски уровня
+function Clear_Paint(){
+    for(var i=0; i<arrCells.length; i++) {
+        var cur_id="m"+parseInt(i+1);
+        var id_new = document.getElementById(cur_id);
+        id_new.style.backgroundColor = "";
+    }
+}
 function Paint(){
-
+        Clear_Paint();
         for(var i=0; i<arrCells.length; i++) {
-            cur_id="m"+parseInt(i+1);
-            id_new = document.getElementById(cur_id);
+            var cur_id="m"+parseInt(i+1);
+            var id_new = document.getElementById(cur_id);
             id_new.style.backgroundColor = arrColors[arrCells[i]];
         }
 }
@@ -172,17 +179,19 @@ function UseColor (cell){
 function Chek(id1){
 
     var f=0;
-    var str;
+    var str1, str2;
     id_but =  document.getElementById(id1);
 
     clearInterval(t); //Останавливаем таймер
     s = sec; m = min;
 
     // Непосредственно проверка совпадения цвета в каждой ячейке
-    for (var i=0; i<arrCells.length; i++) {
-        str = "tc"+parseInt(i+1);
-        id_arr = document.getElementById(str);
-        if(id_arr.style.backgroundColor != arrColors[arrCells[i]]){
+    for (var i=0; i<=arrCells.length-1; i++) {
+        str1 = "tc"+parseInt(i+1);
+        str2 = "m"+parseInt(i+1);
+        id_arr = document.getElementById(str1);
+        id_map = document.getElementById(str2);
+        if(id_arr.style.backgroundColor != id_map.style.backgroundColor){
             f = 1; //несовпадение цветов
         }
     }

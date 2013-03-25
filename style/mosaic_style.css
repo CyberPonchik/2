@@ -6,22 +6,25 @@
 }
 .new_field {
     position: absolute;
+    top: 10px;
+    height: 600px;
+    width: 1000px;
 
 }
 .new_rainbow {
     position: absolute;
-    left: 500px;
-    top: 20px;
+    left: 1230px;
+    top: 10px;
     height: 600px;
     width: 120px;
 }
 
 .map{
     position: absolute;
-    left: 800px;
-    top: 20px;
-    height: 120px;
-    width: 120px;
+    left: 1020px;
+    top: 10px;
+    height: 200px;
+    width: 200px;
 }
 .wr {
     position: absolute;
@@ -53,8 +56,8 @@
 }
 #timer{
     position: absolute;
-    left: 800px;
-    top: 180px;
+    left: 1020px;
+    top: 230px;
 }
 
 #res2{
