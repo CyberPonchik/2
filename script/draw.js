@@ -345,7 +345,7 @@ sound.addEventListener('timeupdate', function(audio_ev){
 //Проигрываем заданный фрагмент звукового файла с названием цветов
 function AudioPlay(mus_el){
 
-    if (audiosprite[mus_el]){
+    if (audiosprite[mus_el] && a_off===0){
         sound.currentTime=audiosprite[mus_el][0];
         end=audiosprite[mus_el][1];
         sound.play();
@@ -365,7 +365,7 @@ awards.addEventListener('timeupdate',function(aw_ev){
 function AwardsPlay(aw_el){
 
     awards.pause();
-    if (audio_records[aw_el]){
+    if (audio_records[aw_el] && a_off===0){
         awards.currentTime=audio_records[aw_el][0];
         end_aw=audio_records[aw_el][1];
         awards.play();
@@ -419,12 +419,61 @@ function PauseOn (){
 }
 
 function PauseOff (){
-    sound_fon.play();
+    if (m_off===0){sound_fon.play();}
     Timer();
     document.getElementById("p1").style.display="none";
     document.getElementById("p2").style.display="none";
     document.getElementById("p3").style.display="none";
 
 }
+function AudioOff (){
+    clearInterval(t);
+    document.getElementById("a1").style.display="block";
+    document.getElementById("a2").style.display="block";
+    document.getElementById("a3").style.display="block";
+    document.getElementById("a4").style.display="block";
+    document.getElementById("a5").style.display="block";
 
+}
+function ChangeSetMusic (){
+    Timer();
+    document.getElementById("a1").style.display="none";
+    document.getElementById("a2").style.display="none";
+    document.getElementById("a3").style.display="none";
+    document.getElementById("a4").style.display="none";
+    document.getElementById("a5").style.display="none";
+
+}
+
+function MusicOff(){
+    var aud_but;
+    aud_but=document.getElementById("a3");
+    if (m_off===0){
+        sound_fon.pause();
+        m_off=1;
+        aud_but.style.border = "inset";
+    }
+    else {
+        sound_fon.play();
+        m_off=0;
+        aud_but.style.border = "outset";
+    }
+}
+
+function SoundOff(){
+    var aud_but;
+    aud_but=document.getElementById("a4");
+    if (a_off===0){
+        sound.pause();
+        awards.pause();
+        a_off=1;
+        aud_but.style.border = "inset";
+    }
+    else {
+        sound.play();
+        awards.play();
+        a_off=0;
+        aud_but.style.border = "outset";
+    }
+}
 

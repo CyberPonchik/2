@@ -1,4 +1,4 @@
-﻿#id1,#id2 {
+﻿#id1,#id2,#id3 {
     position: absolute;
     height: 50px;
     width: 60px;
@@ -74,7 +74,10 @@
     background-size: 90px 90px;
 
 }
-#p3{
+#a3, #a4{
+    border-style: outset;
+}
+#p3, #a5{
     border-style: outset;
     color: #00008b;
     background: #ffe4c4;
@@ -82,8 +85,6 @@
     height: 50px;
     width: 150px;
     position: absolute;
-    left: 125px;
-    top: 250px;
     display: none;
     opacity: 1;
     text-align: center;

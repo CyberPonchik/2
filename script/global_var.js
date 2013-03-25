@@ -24,6 +24,8 @@ var sec;
 var min;
 var sound;
 var sound_fon;
+var m_off = 0;
+var a_off = 0;
 var end=0;
 var end_aw=0;
 var med;
