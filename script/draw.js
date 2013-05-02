@@ -22,6 +22,7 @@ function OnStart(){
     localStorage.num_lev=1;
     ClearTable('new_rainbow');
     CreateRainbow();
+    MainDB();
     onRestart();
 
     //Draw();
@@ -37,9 +38,17 @@ function onRestart(){
     Timer();
     Paint();
     ClearTable('new_field');
+    GetWindowSize();
     CreateTable(field_length);
+    DrawBorderImage();
 
 }
+var y;
+var x;
+function GetWindowSize(){
+    y = window.innerHeight;
+    x = window.innerWidth;
+ }
 
 function ClearTable(id){
    for(var i=document.getElementById(id).rows.length;i>0;i-- ){
@@ -50,23 +59,24 @@ function CreateTable(field_length){
     var field;
     var row;
     var cell;
+    var x_cell=parseInt((x-500)/field_length);
+    var y_cell=parseInt((y-50)/field_length);
 
     //field=document.createElement('table');
     field=document.getElementById('new_field');
-   /* field.style.border = '2';
-    field.style.borderColor='black';
-    field.style.position = 'absolute';
-    field.style.width = '400px';
-    field.style.height = '400px';*/
 
     for (var i=0; i<=field_length-1; i++){
         row=field.insertRow(-1);
         for (var j=0;j<=field_length-1; j++){
             cell=row.insertCell(-1);
             var num=i*field_length+(j+1);
-            cell.id="tc"+num;
-            cell.innerHTML=cell.id;
             cell.style.backgroundColor="";
+            cell.style.width = parseInt((x-500)/field_length)+'px';
+            cell.style.height = parseInt((y-120)/field_length)+'px';
+
+          //  cell.style.borderWidth = "2px";
+          //  cell.style.borderColor = "grey";
+           // cell.style.backgroundImage='url(img/bright_squares.png)';
 
         }
     }
@@ -127,6 +137,19 @@ function Paint(){
         }
 }
 
+function DrawBorderImage(){
+    for (var i=0; i<=arrCells.length-1; i++){
+         var cur_id="m"+parseInt(i+1);
+         var id_cell="tc"+parseInt(i+1);
+         var id_new = document.getElementById(cur_id);
+         var new_cell = document.getElementById(id_cell);
+        if (id_new.style.backgroundColor != ""){
+            new_cell.style.borderWidth = "4px";
+            new_cell.style.borderColor = "red";
+         }
+
+    }
+}
 //Рисуем палитру цветов
 /*function Draw(){
     for(var i=0; i<arrColors.length; i++) {
@@ -152,7 +175,6 @@ function SaveColor () {
         cur_color=parseInt(id.replace(/\D+/g,""));
         --cur_color;
         AudioPlay(arrColors_name[cur_color]);
-        //UseColor(id);
 
     },false);
      return cur_color;
@@ -162,7 +184,8 @@ function SaveColor () {
 function UseColor (cell){
 
     id_cell = document.getElementById(cell);
-    id_cell.style.backgroundColor = arrColors[cur_color];
+    id_cell.className = id_cell.className +" "+arrColors_name[cur_color];
+    //id_cell.style.backgroundColor = arrColors[cur_color];
     num = parseInt(cell.replace(/\D+/g,""))-1;
     if(cur_color!=arrCells[num]){
         AudioPlay('attention');
@@ -470,8 +493,6 @@ function SoundOff(){
         aud_but.style.border = "inset";
     }
     else {
-        sound.play();
-        awards.play();
         a_off=0;
         aud_but.style.border = "outset";
     }

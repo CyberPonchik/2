@@ -51,8 +51,10 @@ function InsertData(){
         {
        var map1;
         map1= "2,1,2,1,1,2,1,2,2,1,2,1,1,2,1,2";
-        ins.executeSql("INSERT INTO Level(number,difficult,map) values (?,?,?)", [1, "easy", map1],
-        function(res){}, function(ins, err){alert("Error: "+err);});
+        //ins.executeSql("INSERT INTO Level(number,difficult,map) values (?,?,?)", [1, "easy", map1],
+        //function(res){}, function(ins, err){alert("Error: "+err);});
+            ins.executeSql("INSERT INTO Level(number,difficult,map) values (?,?,?)", [1, "easy", map1],
+                function(res){}, function(ins, err){alert("Error: "+err);});
         }
     )
 }
@@ -90,4 +92,4 @@ mosaic_db.transaction(function (rm)
 */
 //arr_map=res.split(",");'
 
-a=arr_map[0];
+//a=arr_map[0];
