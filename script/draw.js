@@ -59,6 +59,7 @@ function CreateTable(field_length){
     var field;
     var row;
     var cell;
+    var div;
     var x_cell=parseInt((x-500)/field_length);
     var y_cell=parseInt((y-50)/field_length);
 
@@ -69,25 +70,30 @@ function CreateTable(field_length){
         row=field.insertRow(-1);
         for (var j=0;j<=field_length-1; j++){
             cell=row.insertCell(-1);
-            var num=i*field_length+(j+1);
-            cell.style.backgroundColor="";
-            cell.style.width = parseInt((x-500)/field_length)+'px';
-            cell.style.height = parseInt((y-120)/field_length)+'px';
 
-          //  cell.style.borderWidth = "2px";
-          //  cell.style.borderColor = "grey";
-           // cell.style.backgroundImage='url(img/bright_squares.png)';
+            var num=i*field_length+(j+1);
+            div = document.createElement("div");
+            div.id = "d"+num.toString();
+            cell.appendChild(div);
+            div.className="glass";
+
+            //div.style.backgroundColor="";
+            div.style.height = parseInt((y-300)/field_length)+'px';
+            div.style.width = div.style.height;
 
         }
     }
     field.addEventListener("click",function(e){
         var elem = null;
+
         if (e) {elem = e.target}
 
         if (elem.tagName!='TABLE'){
-            var id = elem.id;
-            UseColor(id);
-        }
+              var id = elem.id;
+            //if (click_on===0){
+              UseColor(id);
+            //}
+            }
 
 
     },false);
@@ -106,7 +112,8 @@ function CreateRainbow(){
             cell=row.insertCell(-1);
             var num=i*2+(j+1);
             cell.id="c"+num;
-            cell.innerHTML=cell.id;
+            document.getElementById("c"+num).className += " glass";
+            //cell.innerHTML=cell.id;
             cell.style.backgroundColor = arrColors[num-1];
         }
     }
@@ -140,12 +147,12 @@ function Paint(){
 function DrawBorderImage(){
     for (var i=0; i<=arrCells.length-1; i++){
          var cur_id="m"+parseInt(i+1);
-         var id_cell="tc"+parseInt(i+1);
+         var id_cell="d"+parseInt(i+1);
          var id_new = document.getElementById(cur_id);
          var new_cell = document.getElementById(id_cell);
         if (id_new.style.backgroundColor != ""){
-            new_cell.style.borderWidth = "4px";
-            new_cell.style.borderColor = "red";
+            new_cell.style.borderWidth = "2px";
+            new_cell.style.borderColor = "#464451";
          }
 
     }
@@ -182,11 +189,29 @@ function SaveColor () {
 
 
 function UseColor (cell){
+    var num = parseInt(cell.replace(/\D+/g,""))-1;
+    var id_cell = document.getElementById(cell);
+    var cur_id="m"+(num+1);
+    var id_new = document.getElementById(cur_id);
 
-    id_cell = document.getElementById(cell);
-    id_cell.className = id_cell.className +" "+arrColors_name[cur_color];
-    //id_cell.style.backgroundColor = arrColors[cur_color];
-    num = parseInt(cell.replace(/\D+/g,""))-1;
+
+    if (id_cell.style.backgroundColor != ""){
+        //id_cell.className = "glass";
+        id_cell.style.backgroundColor = "";
+        if (id_new.style.backgroundColor != ""){
+            id_cell.style.borderWidth = "2px";
+            id_cell.style.borderColor = "#464451";
+            }
+    }
+    else {
+        //id_cell.className = id_cell.className +" "+arrColors_name[cur_color];
+        id_cell.style.backgroundColor = arrColors[cur_color];
+        if (id_new.style.backgroundColor != ""){
+        id_cell.style.border = "1px solid rgba(0,0,0,0.5)";
+        id_cell.style.borderBottom = "3px solid rgba(0,0,0,0.5)";}
+
+    }
+
     if(cur_color!=arrCells[num]){
         AudioPlay('attention');
         arr_Flags [num]= 1;
@@ -210,7 +235,7 @@ function Chek(id1){
 
     // Непосредственно проверка совпадения цвета в каждой ячейке
     for (var i=0; i<=arrCells.length-1; i++) {
-        str1 = "tc"+parseInt(i+1);
+        str1 = "d"+parseInt(i+1);
         str2 = "m"+parseInt(i+1);
         id_arr = document.getElementById(str1);
         id_map = document.getElementById(str2);

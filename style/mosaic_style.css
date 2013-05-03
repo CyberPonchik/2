@@ -7,8 +7,8 @@
 .new_field {
     position: absolute;
     top: 10px;
-
-
+    background-color: rgba(211,211,211, .5) ;
+    border-radius: 8px;
 }
 .new_rainbow {
     position: absolute;
@@ -140,13 +140,14 @@
 .galery ul li {
     float: left;
 }
-.new_field td {
+.cell {
     color:#fff;
     line-height: 32px;
     border: 1px solid #054baa;
     text-align: center;
 
     border-radius:16px;
+    opacity: 0.5;
     background:transparent;
     background-image: -webkit-linear-gradient(#0245ad, #01dafb);
     background-image: -moz-linear-gradient(#0245ad, #01dafb);
@@ -160,25 +161,41 @@
     font-size: 14px;
     padding: 0px;
 }
-.new_field td:before {
-    content: ".";
-    color:transparent;
-    line-height: 16px;
+.inox {
+    color:#fff;
+    line-height: 48px;
+    border: 0px;
+    text-align: center;
 
-    margin-top: 0px;
-    margin-bottom: -17px;
-    margin-left: 5px;
-    background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.2) );
-    background-image:-moz-linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.2));
-    background-image: -o-linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.2));
-    border-radius:16px;
-    display:block;
+    border-radius:24px;
+    background:transparent;
+    background-image:-moz-radial-gradient(center bottom, circle cover, rgba(16, 236, 236, 1) 20%, rgba(0, 44, 228, 1) 80%);
+    background-image:-webkit-radial-gradient(center bottom, circle cover, rgba(16, 236, 236, 1) 20%, rgba(0, 44, 228, 1) 80%);
+    background-image:-o-radial-gradient(center bottom, circle cover, rgba(16, 236, 236, 1) 20%, rgba(0, 44, 228, 1) 80%);
+    display: block;
+    padding: 0px;
+    text-decoration: none;
 }
-.sinii {
-    background-image: -webkit-linear-gradient(#0245ad, #01dafb);
-    background-image: -moz-linear-gradient(#0245ad, #01dafb);
-    background-image: -o-linear-gradient(#0245ad, #01dafb);
-    -moz-box-shadow: inset 0px -2px 0 #01fff9;
-    -webkit-box-shadow: inset 0px -2px 0 #01fff9;
-    -o-box-shadow: inset 0px -2px 0 #01fff9;
+
+.glass {
+    text-decoration: none;
+    padding:5px;
+    border: 1px solid rgba(0,0,0,0.5);
+    border-bottom: 3px solid rgba(0,0,0,0.5);
+    border-radius: 8px;
+    opacity:0.7;
+
+    box-shadow:
+        0 2px 8px rgba(0,0,0,0.5), /* Exterior Shadow */
+        inset 0 1px rgba(255,255,255,0.3), /* Top light Line */
+        inset 0 10px rgba(255,255,255,0.2), /* Top Light Shadow */
+        inset 0 10px 20px rgba(255,255,255,0.25), /* Sides Light Shadow */
+        inset 0 -15px 30px rgba(0,0,0,0.3); /* Dark Background */
+    -webkit-box-shadow:
+        0 2px 8px rgba(0,0,0,0.5),
+        inset 0 1px rgba(255,255,255,0.3),
+        inset 0 10px rgba(255,255,255,0.2),
+        inset 0 10px 20px rgba(255,255,255,0.25),
+        inset 0 -15px 30px rgba(0,0,0,0.3);
 }
+
