@@ -9,6 +9,7 @@
     top: 10px;
     background-color: rgba(211,211,211, .5) ;
     border-radius: 8px;
+    box-shadow: inset 0 -15px 30px rgba(0,0,0,0.3);
 }
 .new_rainbow {
     position: absolute;
@@ -198,4 +199,6 @@
         inset 0 10px 20px rgba(255,255,255,0.25),
         inset 0 -15px 30px rgba(0,0,0,0.3);
 }
+
+
 

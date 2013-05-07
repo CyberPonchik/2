@@ -22,6 +22,9 @@ function OnStart(){
     localStorage.num_lev=1;
     ClearTable('new_rainbow');
     CreateRainbow();
+    GetWindowSize();
+    ClearTable('new_field');
+    CreateTable(field_length);
     MainDB();
     onRestart();
 
@@ -37,9 +40,7 @@ function onRestart(){
 
     Timer();
     Paint();
-    ClearTable('new_field');
-    GetWindowSize();
-    CreateTable(field_length);
+    ClearBorderImage();
     DrawBorderImage();
 
 }
@@ -53,6 +54,7 @@ function GetWindowSize(){
 function ClearTable(id){
    for(var i=document.getElementById(id).rows.length;i>0;i-- ){
        document.getElementById(id).deleteRow(i-1);
+      // document.getElementById(id).removeChild();
    }
 }
 function CreateTable(field_length){
@@ -157,6 +159,13 @@ function DrawBorderImage(){
 
     }
 }
+function ClearBorderImage(){
+    for (var i=0; i<=arrCells.length-1; i++){
+        var id_cell="d"+parseInt(i+1);
+        var new_cell = document.getElementById(id_cell);
+        new_cell.style.border = "1px solid rgba(0,0,0,0.5)";
+        new_cell.style.borderBottom = "3px solid rgba(0,0,0,0.5)";}
+    }
 //Рисуем палитру цветов
 /*function Draw(){
     for(var i=0; i<arrColors.length; i++) {
@@ -328,7 +337,7 @@ function Timer(){
         }
         else {s_min = min;}
         //Проверка на достижение времени, установленного для выполнения задания уровня
-        if (min===2){
+        if (min===5){
             clearInterval(t); //Останавливаем таймер
             //Отображаем элементы для вывода результатов
             document.getElementById("wr").style.display="block";
@@ -365,12 +374,12 @@ function game_Awards(s,m,f){
             id_time.innerHTML = "Level time is <br>"+parseInt(m)+" : "+parseInt(s) ;
             }
         else
-            {if ((all_time<120)&& f===0) {
+            {if ((all_time<300)&& f===0) {
                 med = 'bronze';
                 id_time.innerHTML = "Level time is <br>"+parseInt(m)+" : "+parseInt(s) ;
                 }
             else
-                {if (all_time>=120)
+                {if (all_time>=300)
                     {med = 'not';
                     id_time.innerHTML = "Time is over! <br>"+parseInt(m)+" : 00";
                     }
@@ -431,7 +440,7 @@ function LoadMenu(){
 function ClearField(){
 
     for (var i=0; i<arrCells.length; i++) {
-        str = "tc"+parseInt(i+1);
+        str = "d"+parseInt(i+1);
         id_arr = document.getElementById(str);
         id_arr.style.backgroundColor = "";
     }
