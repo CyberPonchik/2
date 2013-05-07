@@ -19,14 +19,18 @@ function OnStart(){
     for (var i=1; i<=field_length; i++){
         arr_Flags[i]=0;
     }
-    localStorage.num_lev=1;
+
     ClearTable('new_rainbow');
     CreateRainbow();
     GetWindowSize();
     ClearTable('new_field');
     CreateTable(field_length);
-    MainDB();
-    onRestart();
+   // MainDB();
+    if (!localStorage.num_lev){
+        localStorage.num_lev=1;
+        onRestart();
+    }
+    else{ onRestart();}
 
     //Draw();
 
@@ -153,7 +157,7 @@ function DrawBorderImage(){
          var id_new = document.getElementById(cur_id);
          var new_cell = document.getElementById(id_cell);
         if (id_new.style.backgroundColor != ""){
-            new_cell.style.borderWidth = "2px";
+            new_cell.style.borderWidth = "3px";
             new_cell.style.borderColor = "#464451";
          }
 
@@ -208,7 +212,7 @@ function UseColor (cell){
         //id_cell.className = "glass";
         id_cell.style.backgroundColor = "";
         if (id_new.style.backgroundColor != ""){
-            id_cell.style.borderWidth = "2px";
+            id_cell.style.borderWidth = "3px";
             id_cell.style.borderColor = "#464451";
             }
     }
@@ -532,3 +536,7 @@ function SoundOff(){
     }
 }
 
+function OpenSelectLevel(){
+    window.location.href = "select_level.html";
+
+}

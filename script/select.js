@@ -36,8 +36,7 @@ ul.addEventListener('click', function(event){
     localStorage.num_lev=window.num_lev;
     //console.log(num_lev);
     window.location.href = "index.html";
-
-    //alert(id);
+     //alert(id);
 }, false);
 
 var position = 0; // текущий сдвиг влево

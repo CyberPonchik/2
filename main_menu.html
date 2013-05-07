@@ -8,28 +8,40 @@
         #pict{
             position: absolute;
             top: 65px;
-            left: 300px;
+            left: 295px;
             height: 550px;
-            width: 800px;
+            width: 700px;
             background: url(img/pic_menu.png) no-repeat;
-            background-size: contain;
+            background-size: 100% 100%;
+            padding:5px;
+            border: 1px solid rgba(0,0,0,0.5);
+            border-bottom: 3px solid rgba(0,0,0,0.5);
+            border-radius: 8px;
+            box-shadow:
+                10px 2px 8px rgba(0,0,0,0.5), /* Exterior Shadow */
+                inset 0 1px rgba(255,255,255,0.3), /* Top light Line */
+                inset 0 10px rgba(255,255,255,0.2), /* Top Light Shadow */
+                inset 0 10px 20px rgba(255,255,255,0.25), /* Sides Light Shadow */
+                inset 0 -15px 30px rgba(0,0,0,0.3); /* Dark Background */
+
         }
     </style>
 
 </head>
 <body>
 <div id="pict"></div>
-<h1><a href="http://www.jqueryscript.net">Mosaic Game</a></h1>
+<h1><a >ДЕТСКАЯ МОЗАИКА</a></h1>
 <div id="main">
     <ul id="navigationMenu">
-        <li> <a class="home" href="#"> <span>Выбор уровня</span> </a> </li>
-        <li> <a class="about" href="#"> <span>Таблица рекордов</span> </a> </li>
-        <li> <a class="services" href="#"> <span>Настройки</span> </a> </li>
-        <li> <a class="portfolio" href="#"> <span>О программе</span> </a> </li>
-        <li> <a class="contact" href="#"> <span>Об авторе</span> </a> </li>
+        <li> <a class="select"> <span onclick="OpenSelectLevel()">Выбор уровня</span> </a> </li>
+        <li> <a class="result"> <span>Таблица рекордов</span> </a> </li>
+        <li> <a class="services"> <span>Настройки</span> </a> </li>
+        <li> <a class="rules"> <span>О программе</span> </a> </li>
+        <li> <a class="about"> <span>Об авторе</span> </a> </li>
     </ul>
 </div>
 
+<script src="script\draw.js" type="text/javascript"></script>
 
 </body>
 </html>
