@@ -208,8 +208,7 @@ function UseColor (cell){
     var id_new = document.getElementById(cur_id);
 
 
-    if (id_cell.style.backgroundColor != ""){
-        //id_cell.className = "glass";
+    if (id_cell.style.backgroundColor === arrColors[cur_color]){
         id_cell.style.backgroundColor = "";
         if (id_new.style.backgroundColor != ""){
             id_cell.style.borderWidth = "3px";
@@ -219,11 +218,7 @@ function UseColor (cell){
     else {
         //id_cell.className = id_cell.className +" "+arrColors_name[cur_color];
         id_cell.style.backgroundColor = arrColors[cur_color];
-        if (id_new.style.backgroundColor != ""){
-        id_cell.style.border = "1px solid rgba(0,0,0,0.5)";
-        id_cell.style.borderBottom = "3px solid rgba(0,0,0,0.5)";}
-
-    }
+         }
 
     if(cur_color!=arrCells[num]){
         AudioPlay('attention');
@@ -538,5 +533,19 @@ function SoundOff(){
 
 function OpenSelectLevel(){
     window.location.href = "select_level.html";
+    //document.getElementById("k1").style.display="block";
+    //document.getElementById("k2").style.display="block";
 
 }
+
+var sw_but = document.getElementById("sw");
+sw_but.addEventListener('click', function(e){
+    if (m_off===0){
+        sound_fon.pause();
+        m_off=1;
+    }
+    else {
+        sound_fon.play();
+        m_off=0;
+    }
+},false);

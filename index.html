@@ -3,15 +3,20 @@
 <head>
     <title></title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="style\mosaic_style.css">
+    <link rel="stylesheet" type="text/css" href="style/mosaic_style.css">
 
 </head>
 
 <body onload="OnStart()">
 
-<div style="left:1020px; top:400px" id="id1" onclick="Chek('id1')">Chek!</div>
+<div><a href="#" class="css_btn_class" style="left:1020px; top:350px" id="id1" onclick="Chek('id1')">Проверить</a></div>
 
 <div id="timer"></div>
+<div id="switcher"  class="switcher">
+    <input id="sw" type="checkbox" class="switcher-value">
+    <label for="sw" class="sw_btn" id="sw_btn"></label>
+    <div class="bg"></div>
+</div>
 
 <audio id="audio_colors" preload="auto">
     <source src="audio\Colors.mp3">
@@ -335,16 +340,16 @@
 </div>
 
 
-<div style="left:1090px; top:400px" id="id2" onclick="PauseOn()">Pause!</div>
+<div class="css_btn_class" style="left:1020px; top:420px" id="id2" onclick="PauseOn()">Пауза в игре</div>
 
 <div id="p1" class="wr">
     <div id="p2" class="mess">
-        <div style="position: absolute; top:100px; left: 125px;">P A U S E !!!</div>
+        <div style="position: absolute; top:100px; left: 125px;">П А У З А !!!</div>
         <div id="p3" style="left: 125px; top: 250px;" onclick="PauseOff()">BACK TO THE GAME</div>
     </div>
 </div>
 
-<div style="left:1160px; top:400px" id="id3" onclick="AudioOff()">SoundOff!</div>
+<div class="css_btn_class" style="left:1020px; top:490px" id="id3" onclick="AudioOff()">Настроить звук</div>
 <div id="a1" class="wr">
     <div id="a2" class="mess">
         <div id="a3"  style="position: absolute; top:100px; left: 125px;" onclick="MusicOff()">Music OFF !!!</div>

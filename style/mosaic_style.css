@@ -1,13 +1,12 @@
-﻿#id1,#id2,#id3 {
-    position: absolute;
-    height: 50px;
-    width: 60px;
-    background-color: blue;
+﻿body{
+    background: url('../img/fon2.jpg');
+    background-size: 100% ;
 }
+
 .new_field {
     position: absolute;
     top: 10px;
-    background-color: rgba(211,211,211, .5) ;
+    background-color: rgba(211,211,211, 1) ;
     border-radius: 8px;
     box-shadow: 10px 5px 8px rgba(0,0,0,0.5);
 }
@@ -17,6 +16,7 @@
     top: 10px;
     height: 600px;
     width: 120px;
+    background-color: rgba(211,211,211, 1) ;
 }
 
 .map{
@@ -25,6 +25,7 @@
     top: 10px;
     height: 200px;
     width: 200px;
+    background-color: rgba(230,230,250, 1) ;
 }
 .wr {
     position: absolute;
@@ -94,27 +95,57 @@
 
 
 .carousel {
-    position: relative;
-    width: 398px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -200px;
+    margin-left: -640px;
+    width: 1200px;
     padding: 10px 40px;
     border: 1px solid #CCC;
     border-radius: 15px;
     background: #eee;
+    opacity: 0.9;
 }
 .carousel img {
-    width: 130px;
-    height: 130px;
+    width: 400px;
+    height: 400px;
     display: block; /* если не поставить block, в ряде браузеров будет inline -> лишнее пространтсво вокруг элементов */
+    opacity: 1;
 }
 .carousel .arrow {
     position: absolute;
-    top: 57px;
+    top: 17px;
+    height: 380px;
     padding: 3px 8px 8px 9px;
     background: #ddd;
     border-radius: 15px;
-    font-size: 24px;
+    font-size: 48px;
     color: #444;
     text-decoration: none;
+}
+span{
+    color: #0196e3;
+    position:absolute;
+    left:10px;
+    top: 0;
+    font-size: 22px;
+    font-weight: bold;
+    font-family:"Myriad Pro",Arial,Helvetica,sans-serif;
+   }
+.difficult{
+    position:absolute;
+    margin-left: -50px;
+    left: 50%;
+    top: 370px;
+    width: 96px;
+    height: 32px;
+    z-index: 1;
+}
+.text{
+    display: table-cell;
+    vertical-align: middle;
+    height: 380px;
 }
 
 .carousel .arrow:hover {
@@ -127,11 +158,11 @@
     right: 7px;
 }
 .galery {
-    width: 390px;
+    width: 1200px;
     overflow: hidden;
 }
 .galery ul {
-    height: 130px;
+    height: 350px;
     width: 9999px;
     margin: 0;
     padding: 0;
@@ -200,5 +231,81 @@
         inset 0 -15px 30px rgba(0,0,0,0.3);
 }
 
+
+.switcher {
+    width: 124px;
+    height: 49px;
+    cursor: pointer;
+    position: absolute;
+    left: 1020px;
+    top: 260px;
+
+}
+
+.switcher * {
+    transition: all .2s;
+    -moz-transition: all .2s;
+    -webkit-transition: all .2s;
+    -o-transition: all .2s;
+    -ms-transition: all .2s;
+}
+
+.switcher .sw_btn {
+    background: url('../img/btn.png') 0% 0% no-repeat;
+    width: 49px;
+    height: 49px;
+    display: block;
+    cursor: pointer;
+    z-index: 1;
+    position: relative;
+}
+
+.switcher .bg { background: url('../img/bg-on.png') 0% 0% no-repeat; }
+.switcher input.switcher-value:checked ~ .sw_btn { margin-left: 68px; }
+.switcher input.switcher-value:checked ~ .sw_btn ~ .bg { background: url('../img/bg-off.png') 0% 0% no-repeat; }
+.switcher input.switcher-value { display: none; }
+.switcher .bg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.css_btn_class {
+    position: absolute;
+    font-size:16px;
+    font-family:Arial;
+    font-weight:bold;
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    border-radius:8px;
+    border:1px solid #74b807;
+    padding:9px 18px;
+    text-decoration:none;
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(72%, #89c403), color-stop(33%, #77a809) );
+    background:-moz-linear-gradient( center top, #89c403 72%, #77a809 33% );
+    background:-ms-linear-gradient( top, #89c403 72%, #77a809 33% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#89c403', endColorstr='#77a809');
+    background-color:#89c403;
+    color:#ffffff;
+    display:inline-block;
+    text-shadow:1px -2px 0px #528009;
+    -webkit-box-shadow: 4px 4px 3px 0px #a4e271;
+    -moz-box-shadow: 4px 4px 3px 0px #a4e271;
+    box-shadow: 4px 4px 3px 0px #a4e271;
+}
+.css_btn_class:hover {
+     background:-webkit-gradient( linear, left top, left bottom, color-stop(72%, #77a809), color-stop(33%, #89c403) );
+     background:-moz-linear-gradient( center top, #77a809 72%, #89c403 33% );
+     background:-ms-linear-gradient( top, #77a809 72%, #89c403 33% );
+     filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#77a809', endColorstr='#89c403');
+     background-color:#77a809;
+ }
+.css_btn_class:active {
+      position:relative;
+      top:1px;
+  }
 
 

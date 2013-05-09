@@ -11,18 +11,35 @@ var lis = document.getElementsByTagName('li');
 
 for(var i=0; i<lis.length; i++) {
     var li = lis[i];
+    var star1 = "url(img/1stars.png)";
+    var star2 = "url(img/2stars.png)";
+    var star3 = "url(img/3stars.png)";
     li.id = "li"+i;
     lis[i].style.position='relative';
     var span = document.createElement('span');
     // обычно лучше использовать CSS-классы,
     // но этот код - для удобства разработки, так что не будем трогать стили
-    span.style.cssText='position:absolute;left:0;top:0';
-    span.innerHTML = i+1;
+    //span.style.cssText='position:absolute;left:10;top:0';
+    span.innerHTML = "Уровень "+(i+1)+": "+arrLevel_name[i];
     lis[i].appendChild(span);
+    var div = document.createElement('div');
+    div.className = "difficult";
+    if (i<3){
+        div.style.background = star1;
+    }
+    else {
+        if (i>2 && i<6){
+            div.style.background = star2;
+        }
+        else{
+            div.style.background = star3;}
+    }
+
+    lis[i].appendChild(div);
 }
 
 /* конфигурация */
-var width = 130; // ширина изображения
+var width = 400; // ширина изображения
 var count = 3; // количество изображений
 
 var ul = document.getElementById('images');
