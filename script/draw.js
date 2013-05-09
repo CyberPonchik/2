@@ -348,7 +348,7 @@ function Timer(){
             min = 0; //Сбрасываем время в 0
         }
         //Вывод значений таймера на странице
-        id_timer.innerHTML = "TIME is:\n   "+s_min+s_sec;
+        id_timer.innerHTML = "Прошло времени:\n   "+s_min+s_sec;
     },1000);
 }
 
@@ -549,3 +549,85 @@ sw_but.addEventListener('click', function(e){
         m_off=0;
     }
 },false);
+
+var on_off = document.getElementById("myonoffswitch");
+on_off.addEventListener('click', function(e){
+    if (m_off===0){
+        sound_fon.pause();
+        m_off=1;
+    }
+    else {
+        sound_fon.play();
+        m_off=0;
+    }
+},false);
+
+/*var myCounter = null
+var timerId = null
+
+function loadCounter(){
+    myCounter = [
+        new Counter("my_counter_1",
+            {
+                digitsNumber : 2,
+                direction : Counter.ScrollDirection.Upwards,
+
+                characterSet : Counter.DefaultCharacterSets.numericUp,
+                charsImageUrl : "images/numeric_up_blackbg5.png",
+                markerImageUrl : "marker.png",
+                extraClassName: {
+                    left: "my_counter_left",
+
+                    right: "my_counter_right",
+
+                    inner: "my_counter_inner"
+                }
+            }),
+        new Counter("my_counter_2",
+            {
+                digitsNumber : 2,
+                direction : Counter.ScrollDirection.Upwards,
+
+                characterSet : Counter.DefaultCharacterSets.numericUp,
+                charsImageUrl : "images/numeric_up_blackbg5.png",
+                markerImageUrl : "marker.png",
+                extraClassName: {
+                    left: "my_counter_left",
+
+                    right: "my_counter_right",
+
+                    inner: "my_counter_inner"
+                }
+            }),
+        new Counter("my_counter_3",
+            {
+                digitsNumber : 2,
+                direction : Counter.ScrollDirection.Upwards,
+
+                characterSet : Counter.DefaultCharacterSets.numericUp,
+                charsImageUrl : "images/numeric_up_blackbg5.png",
+                markerImageUrl : "marker.png",
+                extraClassName: {
+                    left: "my_counter_left",
+
+                    right: "my_counter_right",
+
+                    inner: "my_counter_inner"
+                }
+            })
+    ];
+
+    timerId = window.setInterval(function(){
+            var now = new Date();
+            myCounter[0].setValue(now.getHours(),
+                800);
+            myCounter[1].setValue(now.getMinutes(),
+                800);
+            myCounter[2].setValue(now.getSeconds(),
+                800);
+
+        },
+        1000);
+}
+
+loadCounter();*/
