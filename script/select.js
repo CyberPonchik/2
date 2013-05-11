@@ -11,9 +11,9 @@ var lis = document.getElementsByTagName('li');
 
 for(var i=0; i<lis.length; i++) {
     var li = lis[i];
-    var star1 = "url(img/1stars.png)";
-    var star2 = "url(img/2stars.png)";
-    var star3 = "url(img/3stars.png)";
+    var star1 = "url(img/1stars.png) no-repeat";
+    var star2 = "url(img/2stars.png) no-repeat";
+    var star3 = "url(img/3stars.png) no-repeat";
     li.id = "li"+i;
     lis[i].style.position='relative';
     var span = document.createElement('span');
@@ -35,7 +35,8 @@ for(var i=0; i<lis.length; i++) {
             div.style.background = star3;}
     }
 
-    lis[i].appendChild(div);
+
+    lis[i].getElementsByTagName('div')[0].appendChild(div);
 }
 
 /* конфигурация */
@@ -48,12 +49,13 @@ var imgs = ul.getElementsByTagName('li');
 ul.addEventListener('click', function(event){
     var elem = null;
     if (event) {elem = event.target}
-    var id= elem.parentNode.id;
+    if (elem)
+        var id= elem.parentNode.parentNode.id;
     window.num_lev = parseInt(id.replace(/\D+/g,""))+1;
     localStorage.num_lev=window.num_lev;
     //console.log(num_lev);
     window.location.href = "index.html";
-     //alert(id);
+    //alert(id);
 }, false);
 
 var position = 0; // текущий сдвиг влево

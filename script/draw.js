@@ -250,7 +250,7 @@ function Chek(id1){
     id_but =  document.getElementById(id1);
 
     clearInterval(t); //Останавливаем таймер
-    s = sec; m = min;
+     s = sec; m = min;
 
     // Непосредственно проверка совпадения цвета в каждой ячейке
     for (var i=0; i<=arrCells.length-1; i++) {
@@ -266,6 +266,7 @@ function Chek(id1){
     if (f===0) {
         game_Awards(s,m,f);
         AwardsPlay(med);
+        //CountBall(med);
     }
     else {
         //med='not';
@@ -347,7 +348,7 @@ function Timer(){
         }
         else {s_min = min;}
         //Проверка на достижение времени, установленного для выполнения задания уровня
-        if (min===5){
+        if (min===10){
             clearInterval(t); //Останавливаем таймер
             //Отображаем элементы для вывода результатов
             document.getElementById("wr").style.display="block";
@@ -376,30 +377,58 @@ function game_Awards(s,m,f){
     if ((all_time<=30) && f===0){
         med = 'gold';
         //Вывод времени выполнения задания в соответствующем блоке меню результатов
-        id_time.innerHTML = "Level time is <br>"+parseInt(m)+" : "+parseInt(s) ;
+        id_time.innerHTML = "Затрачено времени <br>"+parseInt(m)+" : "+parseInt(s) ;
     }
     else
         {if ((all_time<=90)&& f===0){
             med = 'silver';
-            id_time.innerHTML = "Level time is <br>"+parseInt(m)+" : "+parseInt(s) ;
+            id_time.innerHTML = "Затрачено времени <br>"+parseInt(m)+" : "+parseInt(s) ;
             }
         else
-            {if ((all_time<300)&& f===0) {
+            {if ((all_time<600)&& f===0) {
                 med = 'bronze';
-                id_time.innerHTML = "Level time is <br>"+parseInt(m)+" : "+parseInt(s) ;
+                CountBall(med);
+                var str_res = "Твой результат: "+res+" баллов";
+                id_time.innerHTML = "Затрачено времени: "+parseInt(m)+" : "+parseInt(s)+"<br>"+"<br>"+str_res;
                 }
             else
-                {if (all_time>=300)
+                {if (all_time>=600)
                     {med = 'not';
-                    id_time.innerHTML = "Time is over! <br>"+parseInt(m)+" : 00";
+                    id_time.innerHTML = "Время вышло! <br>"+parseInt(m)+" : 00";
                     }
                     else {med='not';
-                        id_time.innerHTML = "Level not complete <br>"+parseInt(m)+" : "+parseInt(s) ;
+                        id_time.innerHTML = "Уровень не пройден <br>"+parseInt(m)+" : "+parseInt(s) ;
                         }
                 }
             }
         }
 return med;}
+function CountBall(med){
+    if (med === 'gold'){
+        res = res + 50;
+        if(arrDifficult[num_lev-1]===2){ res = res +res*2;  }
+        else {
+            if(arrDifficult[num_lev-1]===3){ res = res + res*3;  }
+        }
+    }
+    else {if (med === 'silver'){
+        res = res + 25;
+        if(arrDifficult[num_lev-1]===2){ res = res + res*2;  }
+        else {
+            if(arrDifficult[num_lev-1]===3){ res = res + res*3;  }
+        }
+    }
+    else {if (med === 'bronze'){
+        res = res + 15;
+        if(arrDifficult[num_lev-1]===2){ res = res + res*2;  }
+        else {
+            if(arrDifficult[num_lev-1]===3){ res = res + res*3;  }
+        }
+    }
+}
+}
+}
+
 
 //Слушаем события для аудио с названием цветов
 sound.addEventListener('timeupdate', function(audio_ev){
