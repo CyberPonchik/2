@@ -38,6 +38,10 @@ function OnStart(){
 
 function onRestart(){
     num_lev=parseInt(localStorage.num_lev);
+    if(num_lev!=10){
+        if ( document.getElementById('id1').style.display === 'none') {document.getElementById('id1').style.display = 'block'};
+        if ( document.getElementById('timer').style.display === 'none') {document.getElementById('timer').style.display = 'block'};
+        if ( document.getElementById('map').style.display === 'none') {document.getElementById('map').style.display = 'block'};
     GetTask();
     sec = 0;
     min = 0;
@@ -46,7 +50,13 @@ function onRestart(){
     Paint();
     ClearBorderImage();
     DrawBorderImage();
-
+    }
+    else{
+        ClearBorderImage();
+        document.getElementById('id1').style.display = 'none';
+        document.getElementById('timer').style.display = 'none';
+        document.getElementById('map').style.display = 'none';
+    }
 }
 var y;
 var x;
@@ -219,10 +229,11 @@ function UseColor (cell){
         //id_cell.className = id_cell.className +" "+arrColors_name[cur_color];
         id_cell.style.backgroundColor = arrColors[cur_color];
          }
-
+    if (num_lev!=10){
     if(cur_color!=arrCells[num]){
         AudioPlay('attention');
         arr_Flags [num]= 1;
+    }
     }
 }
 
@@ -432,7 +443,7 @@ function AwardsPlay(aw_el){
 //выполняется при нажатии соответствующей кнопи в меню результатов
 function LoadMenu(){
 
-    window.location.href = "menu.html";
+    window.location.href = "select_level.html";
 }
 
 //Очищает поле для выполнения задания от цветов предыдущего уровня
@@ -472,6 +483,7 @@ function PauseOn (){
     document.getElementById("p1").style.display="block";
     document.getElementById("p2").style.display="block";
     document.getElementById("p3").style.display="block";
+    document.getElementById("p4").style.display="block";
 }
 
 function PauseOff (){
@@ -480,6 +492,7 @@ function PauseOff (){
     document.getElementById("p1").style.display="none";
     document.getElementById("p2").style.display="none";
     document.getElementById("p3").style.display="none";
+    document.getElementById("p4").style.display="none";
 
 }
 function AudioOff (){

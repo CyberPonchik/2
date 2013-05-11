@@ -9,7 +9,7 @@
 
 <body onload="OnStart()">
 
-<div><a href="#" class="css_btn_class" style="left:1020px; top:390px" id="id1" onclick="Chek('id1')">Проверить</a></div>
+<div><a href="#" class="css_btn_class" style="left:1020px; top:490px" id="id1" onclick="Chek('id1')">Проверить</a></div>
 
 <div class="timer" id="timer"></div>
 <div id="switcher"  class="switcher">
@@ -33,7 +33,7 @@
 <table id="new_field" class="new_field"></table>
 <table id="new_rainbow" class="new_rainbow" border="2"></table>
 
-<table border="2" class="map">
+<table border="2" id="map" class="map">
     <tr>
         <td id="m1" ></td>
         <td id="m2" ></td>
@@ -340,16 +340,17 @@
 </div>
 
 
-<div class="css_btn_class" style="left:1020px; top:440px" id="id2" onclick="PauseOn()">Пауза в игре</div>
+<div class="css_btn_class" style="left:1020px; top:390px" id="id2" onclick="PauseOn()">Пауза в игре</div>
 
 <div id="p1" class="wr">
     <div id="p2" class="mess">
         <div style="position: absolute; top:100px; left: 125px;">П А У З А !!!</div>
-        <div id="p3" style="left: 125px; top: 250px;" onclick="PauseOff()">BACK TO THE GAME</div>
+        <div id="p3" style="left: 125px; top: 160px;" onclick="PauseOff()">ПРОДОЛЖИТЬ ИГРУ</div>
+        <div id="p4" style="left: 125px; top: 260px;" onclick="LoadMenu()">НА ВЫБОР УРОВНЯ</div>
     </div>
 </div>
 
-<div class="css_btn_class" style="left:1020px; top:490px" id="id3" onclick="AudioOff()">Настроить звук</div>
+<div class="css_btn_class" style="left:1020px; top:440px" id="id3" onclick="AudioOff()">Настроить звук</div>
 <div class="onoffswitch" style="left:1020px; top:560px">
     <input type = "checkbox" name = "onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
     <label class="onoffswitch-label" for="myonoffswitch">
@@ -379,10 +380,10 @@
 
 <div id="a1" class="wr">
     <div id="a2" class="mess">
-        <div id="a3"  style="position: absolute; top:100px; left: 125px;" onclick="MusicOff()">Music OFF !!!</div>
-        <div id="a4"  style="position: absolute; top:150px; left: 125px;" onclick="SoundOff()">Sound OFF !!!</div>
+        <div id="a3"  style="position: absolute; top:100px; left: 125px;" onclick="MusicOff()">Выключить музыку!</div>
+        <div id="a4"  style="position: absolute; top:150px; left: 125px;" onclick="SoundOff()">Выключить звуки!</div>
 
-        <div id="a5" style="left: 125px; top: 250px;" onclick="ChangeSetMusic()">BACK TO THE GAME</div>
+        <div id="a5" style="left: 125px; top: 250px;" onclick="ChangeSetMusic()">ПРОДОЛЖИТЬ ИГРУ</div>
 
     </div>
 
